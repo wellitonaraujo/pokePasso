@@ -34,16 +34,17 @@ const styles = StyleSheet.create({
     },
     card: {
       flex: 1,
-      padding: 30,
+      padding: 20,
       color: '#222',
       marginTop: 15,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 10,
+      borderRadius: 5,
       position: 'relative',
       backgroundColor: '#DEF3FD',
     },
+
     text: {
       fontSize: 16,
       lineHeight: 21,
@@ -55,70 +56,66 @@ const styles = StyleSheet.create({
       backgroundColor: 'white'
     },
     title: {
-      fontSize: 30,
-      marginTop: 30,
+      fontSize: 32,
     },
-
-
-
     steel: {
-      backgroundColor: '#417d9a',
+      backgroundColor: '#f4f4f4',
     },
   
     fire: {
-      backgroundColor: '#fd7d24',
+      backgroundColor: '#FDDFDF',
     },
   
     grass: {
-      backgroundColor: '#556aae',
+      backgroundColor: '#DEFDE0',
     },
   
     electric: {
-      backgroundColor: '#eed535',
+      backgroundColor: '#FCF7DE',
     },
   
     water: {
-      backgroundColor: '#4a90da',
+      backgroundColor: '#DEF3FD',
     },
   
     ground: {
-      backgroundColor: '#dd7748',
+      backgroundColor: '#f4e7da',
     },
   
     rock: {
-      backgroundColor: '#baab82',
+      backgroundColor: '#d5d5d4',
     },
   
     fairy: {
-      backgroundColor: '#ed6ec7',
+      backgroundColor: '#fceaff',
     },
   
     poison: {
-      backgroundColor: '#a552cc',
+      backgroundColor: '#98d7a5',
     },
   
     bug: {
-      backgroundColor: '#8cb230',
+      backgroundColor: '#f8d5a3',
     },
   
     dragon: {
-      backgroundColor: '#0f6ac0',
+      backgroundColor: '#97b3e6',
     },
   
     psychic: {
-      backgroundColor: '#ea5d60',
+      backgroundColor: '#eaeda1',
     },
   
     flying: {
-      backgroundColor: '#748fc9',
+      backgroundColor: '#F5F5F5',
     },
   
     fighting: {
-      backgroundColor: '#d04164',
+      backgroundColor: '#E6E0D4',
     },
   
     normal: {
-      backgroundColor: '#9da0aa',
+      backgroundColor: '#F5F5F5',
     },
     colData: {
       flexDirection: 'row',

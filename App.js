@@ -35,7 +35,6 @@ const App = () => {
                           title:"Informações"
                         }}
                         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );

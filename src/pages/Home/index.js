@@ -1,9 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-
-import styles from './styles';
-
 import {
   SafeAreaView,
   Text,
@@ -11,10 +8,11 @@ import {
   FlatList,
   Image,
   Pressable,
-  ActivityIndicator,
 } from 'react-native';
 
 import api from  '../../services/api'
+import styles from './styles';
+import { keyExtractor } from 'react-native/Libraries/Lists/VirtualizeUtils';
 
 const Home = () => {
 
@@ -62,10 +60,6 @@ fethPokemon()
 }, [offset])
 
 
-const loadPokemon = () => {
-  setOffset((item) => item + limit)
-}
-
 // Função que calcula os IDs dos pokemons
 const calPokemonId = (id) => {
   let pokemonId
@@ -90,6 +84,7 @@ const calPokemonId = (id) => {
             showsVerticalScrollIndicator={false}
             style={{ flex: 1}}
             data={pokemon}
+            keyExtractor={ item => String(item.id)}
             renderItem={ ({item}) => {
                 return(
 
@@ -101,10 +96,11 @@ const calPokemonId = (id) => {
                         <Image
                             style={styles.pokemonImage}
                             source={{
-                                uri: `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${item.id}.png`,
+                                uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,
+                                
                             }}
                         />
-                        <Text style={styles.title}>{item.id}. {item.name}</Text>
+                        <Text style={styles.title}>{item.id}. {item.name.toUpperCase()}</Text>
                         <Text style={styles.item}></Text>
                     </Pressable>
                 )
