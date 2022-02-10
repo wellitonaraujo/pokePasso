@@ -11,31 +11,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import React from 'react';
 
-import Home from './src/pages/Home'
-import Pokemon from './src/pages/Pokemon'
+import Routes from './src/routes';
 
-const Stack = createNativeStackNavigator()
 const App = () => {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-
-          <Stack.Screen name="Home"
-                        component={Home}
-                        options={{
-                          title: "Lista de Pokemons"
-                        }}
-
-                        />
-
-          <Stack.Screen name="Pokemon" 
-                        component={Pokemon}
-                        options={{
-                          title:"Informações"
-                        }}
-                        />
-      </Stack.Navigator>
+      <Routes />
     </NavigationContainer>
   );
 };

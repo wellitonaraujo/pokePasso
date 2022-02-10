@@ -100,7 +100,7 @@ const calPokemonId = (id) => {
                                 
                             }}
                         />
-                        <Text style={styles.title}>{item.id}. {item.name.toUpperCase()}</Text>
+                        <Text style={styles.title}>{item.id} - {item.name.toUpperCase()}</Text>
                         <Text style={styles.item}></Text>
                     </Pressable>
                 )
