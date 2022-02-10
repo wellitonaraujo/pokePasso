@@ -140,16 +140,7 @@ const styles = StyleSheet.create({
       color: '#666',
       width: '50%' // is 50% of container width
     },
-    favoriteButton: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 20,
-      paddingHorizontal: 32,
-      borderRadius: 20,
-      elevation: 3,
-      backgroundColor: '#c18f00',
-      margin: 20,
-    }
+
 });
 
 export default styles;

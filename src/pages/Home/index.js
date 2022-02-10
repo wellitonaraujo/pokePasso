@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
@@ -15,32 +16,31 @@ import {
 
 import api from  '../../services/api'
 
-
-import { useNavigation } from '@react-navigation/native';
-
 const Home = () => {
 
   const navigation = useNavigation()
 
-
+  const [loading, setLoading] = useState(false);
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [loading, setLoading] = useState(false);
 
-
+  // Limite max de pokemons por Tela
   const limit = 15;
 
 // hook que será chamado quando nossos pokemons forem montados na tela
 useEffect(() => {
 
+  // Função que busca nossos pokemons
   const fethPokemon = () => {
 
     setLoading(true);
 
     api.get(`?offset=${offset}&limit=${limit}`).then(pokemons => {
 
+        // Percorrendo todos os nossos pokemons
         const pokemonList = pokemons.data.results.map((pokemon, pokemonId) => {
             
+          // Iniciando a contagem a partir de 1
           return {
                 name: pokemon.name,
                 id: calPokemonId(pokemonId + offset + 1),
@@ -49,9 +49,11 @@ useEffect(() => {
 
         setLoading(false);
         
-        setPokemon((prev) => [...prev, ...pokemonList])
+        // Atualizando nossa setPokemon com a lista 
+        setPokemon((item) => [...item, ...pokemonList])
+
     }).catch(error => {
-      
+
         setLoading(false);
     })
 }
@@ -61,9 +63,10 @@ fethPokemon()
 
 
 const loadPokemon = () => {
-  setOffset((prev) => prev + limit)
+  setOffset((item) => item + limit)
 }
 
+// Função que calcula os IDs dos pokemons
 const calPokemonId = (id) => {
   let pokemonId
 
@@ -80,16 +83,6 @@ const calPokemonId = (id) => {
   return pokemonId
 }
 
-renderFooter = () => {
-  if (!loading) return null;
-  return (
-    <View>
-      <ActivityIndicator />
-    </View>
-  );
-};
-
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
     <View style={[styles.container, styles.background]}>
@@ -99,33 +92,28 @@ renderFooter = () => {
             data={pokemon}
             renderItem={ ({item}) => {
                 return(
+
+                  // Navegacao para a Tela de Informações do Pokemon
                     <Pressable style={[styles.card]} onPress={() =>
-                        navigation.navigate('PokemonInformation', { name: item.name, id: item.id })}>
+                        navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
+
+                          {/* Listagem das imagens dos pokemons */}
                         <Image
                             style={styles.pokemonImage}
                             source={{
                                 uri: `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${item.id}.png`,
                             }}
-                            
                         />
                         <Text style={styles.title}>{item.id}. {item.name}</Text>
                         <Text style={styles.item}></Text>
                     </Pressable>
                 )
             }}
-            keyExtractor={item => item.id.toString()}
-            onEndReached={() => loadPokemon()}
-            onEndReachedThreshold={0.1}
-            ListFooterComponent={() => renderFooter()}
         />
-        {/* <Pressable style={styles.favoriteButton} onPress={() => navigation.navigate('FavoriteList')}>
-            <Text style={styles.text}>Ir para os favoritos</Text>
-        </Pressable> */}
+
     </View>
 </SafeAreaView>
   );
 };
-
-
 
 export default Home;
