@@ -106,6 +106,7 @@ renderFooter = () => {
                             source={{
                                 uri: `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${item.id}.png`,
                             }}
+                            
                         />
                         <Text style={styles.title}>{item.id}. {item.name}</Text>
                         <Text style={styles.item}></Text>
