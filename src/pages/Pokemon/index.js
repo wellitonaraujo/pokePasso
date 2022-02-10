@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {  SafeAreaView, Text, Image, View } from 'react-native';
 
 import api from '../../services/api';
-import styles from '../Pokemon/styles';
+import styles from '../styles';
 
 
 const Pokemon = ({route}) => {
@@ -42,21 +42,27 @@ const Pokemon = ({route}) => {
   const pokemonName = route.params.name.charAt(0) + route.params.name.slice(1);
   
   return (
-        <SafeAreaView style={[styles.card, styles[pokemon.type[0]]]}>
-            <Text style={styles.title}>{pokemonName.toUpperCase()}</Text>
+        <SafeAreaView style={[styles[pokemon.type[0]]]}>
+          <View style={styles.pokemonDetails}>
+         
+          <Text style={styles.title}>{pokemonName.toUpperCase()}</Text>
             <Image
-                style={styles.pokemonImage}
+                style={styles.pokemonImageDetails}
                 source={{
                     uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${route.params.id}.png`,
                 }}
             />
             <Text style={styles.item}>{pokemon.type.join(' | ')}</Text>
+            
             <View style={styles.colData}>
                 <Text style={styles.pokemonItem}>Altura: {pokemon.height} cm</Text>
                 <Text style={styles.pokemonItem}>Peso: {pokemon.weight} g</Text>
                 <Text style={styles.pokemonItem}>Habilidade 1: {pokemon.abilitie1}</Text>
                 <Text style={styles.pokemonItem}>Habilidade 2: {pokemon.abilitie2}</Text>
             </View>
+          </View>
+            
+
         </SafeAreaView>
   );
 };

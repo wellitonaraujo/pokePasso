@@ -14,7 +14,11 @@ export default function AppRoutes() {
         <Stack.Screen name="Home"
                       component={Home}
                       options={{
-                        title: "Lista de Pokemons"
+                        title: "Lista de Pokemons",
+                        headerTintColor: "#ffff",
+                        headerStyle: {
+                          backgroundColor: "#C03028",
+                        }
                       }}
 
                       />
@@ -22,7 +26,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Pokemon" 
                       component={Pokemon}
                       options={{
-                        title:"Informações"
+                        title:"Informações",
                       }}
                       />
     </Stack.Navigator>

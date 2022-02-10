@@ -2,47 +2,71 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
+      paddingHorizontal: 10,
     },
     sectionTitle: {
-      fontSize: 24,
+      fontSize: 34,
       fontWeight: '600',
     },
     sectionDescription: {
       marginTop: 8,
-      fontSize: 18,
+      fontSize: 25,
       fontWeight: '400',
     },
     highlight: {
       fontWeight: '700',
     },
     item: {
-      fontSize: 30,
+      fontSize: 20,
       marginTop: 5,
       color: '#666',
     },
     container: {
       flex: 1,
-      paddingTop: 50,
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: "#000"
     },
     pokemonImage: {
-      width: 200,
-      height: 200,
+      width: 120,
+      height: 120,
     },
+    pokemonImageDetails:{
+      width: 150,
+      height: 150,
+    },
+
     card: {
-      flex: 1,
-      padding: 20,
-      color: '#222',
-      marginTop: 15,
+      width: 180,
+      height: 160,
+      // flex: 1,
+
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 5,
       position: 'relative',
-      backgroundColor: '#DEF3FD',
+      backgroundColor: '#fff',
+      marginTop: 14,
+      marginLeft: 10,
+      marginRight: 10,
+      borderRadius: 10,
+      
+    },
+
+    name:{
+      fontSize: 18,
+      // paddingTop: 10
+      color: '#C03028',
+      fontWeight: '500'
+    },
+    
+    pokemonDetails:{
+      
+      color: '#222',
+      textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
     },
 
     text: {
@@ -53,82 +77,84 @@ const styles = StyleSheet.create({
       color: 'white',
     },
     background: {
-      backgroundColor: 'white'
+      // backgroundColor: 'white'
     },
     title: {
-      fontSize: 32,
+      fontSize: 24,
     },
+
     steel: {
-      backgroundColor: '#f4f4f4',
+      backgroundColor: '#B8B8D0',
     },
   
     fire: {
-      backgroundColor: '#FDDFDF',
+      backgroundColor: '#FA6C6C',
     },
   
     grass: {
-      backgroundColor: '#DEFDE0',
+      backgroundColor: '#48CFB2',
     },
   
     electric: {
-      backgroundColor: '#FCF7DE',
+      backgroundColor: '#FFCE4B',
     },
   
     water: {
-      backgroundColor: '#DEF3FD',
+      backgroundColor: '#6890F0',
     },
   
     ground: {
-      backgroundColor: '#f4e7da',
+      backgroundColor: '#E0C068',
     },
   
     rock: {
-      backgroundColor: '#d5d5d4',
+      backgroundColor: '#B8A038',
     },
   
     fairy: {
-      backgroundColor: '#fceaff',
+      backgroundColor: '#EE99AC',
     },
   
     poison: {
-      backgroundColor: '#98d7a5',
+      backgroundColor: '#A040A0',
     },
   
     bug: {
-      backgroundColor: '#f8d5a3',
+      backgroundColor: '#A8B820',
     },
   
     dragon: {
-      backgroundColor: '#97b3e6',
+      backgroundColor: '#7038F8',
     },
   
     psychic: {
-      backgroundColor: '#eaeda1',
+      backgroundColor: '#F85888',
     },
   
     flying: {
-      backgroundColor: '#F5F5F5',
+      backgroundColor: '#A890F0',
     },
   
     fighting: {
-      backgroundColor: '#E6E0D4',
+      backgroundColor: '#C03028',
     },
   
     normal: {
-      backgroundColor: '#F5F5F5',
+      backgroundColor: '#A8A878',
     },
+
     colData: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',
-      margin: 20,
+      margin: 10,
     },
     pokemonItem: {
       fontSize: 20,
-      marginTop: 5,
+      // marginTop: 5,
       padding: 10,
-      color: '#666',
+      color: '#fff',
       width: '50%' // is 50% of container width
     },
 

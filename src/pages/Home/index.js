@@ -7,12 +7,11 @@ import {
   View,
   FlatList,
   Image,
-  Pressable,
+  Pressable, ActivityIndicator
 } from 'react-native';
 
 import api from  '../../services/api'
-import styles from './styles';
-import { keyExtractor } from 'react-native/Libraries/Lists/VirtualizeUtils';
+import styles from '../styles';
 
 const Home = () => {
 
@@ -23,7 +22,7 @@ const Home = () => {
   const [offset, setOffset] = useState(0);
 
   // Limite max de pokemons por Tela
-  const limit = 15;
+  const limit = 1000;
 
 // hook que será chamado quando nossos pokemons forem montados na tela
 useEffect(() => {
@@ -51,8 +50,7 @@ useEffect(() => {
         setPokemon((item) => [...item, ...pokemonList])
 
     }).catch(error => {
-
-        setLoading(false);
+        console.log(er)
     })
 }
 
@@ -78,12 +76,13 @@ const calPokemonId = (id) => {
 }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-    <View style={[styles.container, styles.background]}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#000'}}>
+    <View style={[styles.container]}>
         <FlatList 
             showsVerticalScrollIndicator={false}
-            style={{ flex: 1}}
+            // style={{ flex: 1}}
             data={pokemon}
+            numColumns={2}
             keyExtractor={ item => String(item.id)}
             renderItem={ ({item}) => {
                 return(
@@ -100,7 +99,7 @@ const calPokemonId = (id) => {
                                 
                             }}
                         />
-                        <Text style={styles.title}>{item.id} - {item.name.toUpperCase()}</Text>
+                        <Text style={styles.name}>{item.id} - {item.name.toUpperCase()}</Text>
                         <Text style={styles.item}></Text>
                     </Pressable>
                 )
