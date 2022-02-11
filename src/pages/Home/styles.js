@@ -9,18 +9,25 @@ const styles = StyleSheet.create({
       backgroundColor:  '#1c1c1c'
     },
     card: {
-      width: 180,
-      height: 160,
+      width: 190,
+      height: 180,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
       backgroundColor: '#fff',
-      marginTop: 14,
-      marginLeft: 8,
-      marginRight: 8,
+      marginTop: 10,
+      marginLeft: 5,
+      marginRight: 5,
       borderRadius: 10,
+      paddingTop: 30,
     },
+
+    id:{
+      fontSize: 18,
+      paddingTop: 5,
+    },
+
     pokemonImage: {
       width: 120,
       height: 120,
@@ -29,7 +36,8 @@ const styles = StyleSheet.create({
     name:{
       fontSize: 18,
       color: '#C03028',
-      fontWeight: '500'
+      fontWeight: '500',
+      paddingBottom: 10
     },
 });
 

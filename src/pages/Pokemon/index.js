@@ -15,7 +15,7 @@ const Pokemon = ({route}) => {
   useEffect(() => {
 
     // Buscando e armazenando nosssos pokemons por tipo e habilidade
-    const fethPokemon = (name) => {
+      const fethPokemon = (name) => {
       const typeList = [];
       const abilitiesList = [];
 
@@ -61,8 +61,8 @@ const Pokemon = ({route}) => {
     </Animatable.Image>
     <Text style={styles.type}>{pokemon.type.join(' | ').toLocaleUpperCase()}</Text>
     <View style={styles.informations}>
-        <Text style={styles.pokemonInfo}>Altura: {pokemon.height} cm</Text>
-        <Text style={styles.pokemonInfo}>Peso: {pokemon.weight} g</Text>
+        <Text style={styles.pokemonInfo}>Altura: {pokemon.height / 10} m</Text>
+        <Text style={styles.pokemonInfo}>Peso: {pokemon.weight / 10} kg</Text>
         <Text style={styles.pokemonInfo}>Habilidade 1: {pokemon.abilitie1}</Text>
         <Text style={styles.pokemonInfo}>Habilidade 2: {pokemon.abilitie2}</Text>
     </View>
