@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import {  SafeAreaView, Text, Image, View, StatusBar } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 import api from '../../services/api';
 import styles from './styles';
@@ -44,12 +45,16 @@ const Pokemon = ({route}) => {
   return (
     <SafeAreaView style={[styles.card, colors[pokemon.type[0]]]}>
     <Text style={styles.name}>{pokemonName.toLocaleUpperCase()}</Text>
-    <Image
+    <Animatable.Image
+        animation='pulse'
+        iterationCount={Infinity}
         style={styles.pokemonImage}
         source={{
             uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${route.params.id}.png`,
         }}
-    />
+
+    >
+    </Animatable.Image>
     <Text style={styles.type}>{pokemon.type.join(' | ').toLocaleUpperCase()}</Text>
     <View style={styles.informations}>
         <Text style={styles.pokemonInfo}>Altura: {pokemon.height} cm</Text>

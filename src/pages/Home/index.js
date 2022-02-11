@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 import {
   SafeAreaView,
   Text,
@@ -72,6 +73,7 @@ const calPokemonId = (id) => {
       pokemonId = id
   }
 
+
   return pokemonId
 
 }
@@ -94,13 +96,14 @@ const calPokemonId = (id) => {
                         navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
 
                           {/* Listagem das imagens dos pokemons */}
-                        <Image
-                            style={styles.pokemonImage}
-                            source={{
-                                uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,
-                                
-                            }}
-                        />
+                        <Animatable.Image
+                                animation='pulse'
+                                iterationCount={Infinity}
+                                style={styles.pokemonImage}
+                                source={{
+                                        uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,            
+                                        }}
+                        ></Animatable.Image>
                         <Text style={styles.name}>{item.id} - {item.name.toUpperCase()}</Text>
                         <Text style={styles.item}></Text>
                     </Pressable>
