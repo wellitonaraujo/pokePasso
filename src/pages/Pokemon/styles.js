@@ -1,72 +1,36 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    sectionContainer: {
-      paddingHorizontal: 10,
-    },
-    sectionTitle: {
-      fontSize: 34,
-      fontWeight: '600',
-    },
-    sectionDescription: {
-      marginTop: 8,
-      fontSize: 25,
-      fontWeight: '400',
-    },
+   
     highlight: {
       fontWeight: '700',
     },
     item: {
-      fontSize: 20,
-      marginTop: 5,
-      color: '#666',
+      fontSize: 40,
+      marginTop: 0,
+      color: '#fff',
     },
     container: {
       flex: 1,
+      paddingTop: 50,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: "#000"
     },
     pokemonImage: {
-      width: 120,
-      height: 120,
+      width: 250,
+      height: 250,
     },
-    pokemonImageDetails:{
-      width: 150,
-      height: 150,
-    },
-
     card: {
-      width: 180,
-      height: 160,
-      // flex: 1,
-
-      textAlign: 'center',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      backgroundColor: '#fff',
-      marginTop: 14,
-      marginLeft: 10,
-      marginRight: 10,
-      borderRadius: 10,
-      
-    },
-
-    name:{
-      fontSize: 18,
-      // paddingTop: 10
-      color: '#C03028',
-      fontWeight: '500'
-    },
-    
-    pokemonDetails:{
-      
+      flex: 1,
+      padding: 40,
       color: '#222',
+      // marginTop: 15,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
+      // borderRadius: 20,
       position: 'relative',
+      backgroundColor: '#DEF3FD',
     },
 
     text: {
@@ -77,12 +41,11 @@ const styles = StyleSheet.create({
       color: 'white',
     },
     background: {
-      // backgroundColor: 'white'
+      backgroundColor: 'white'
     },
     title: {
-      fontSize: 24,
+      fontSize: 32,
     },
-
     steel: {
       backgroundColor: '#B8B8D0',
     },
@@ -142,22 +105,20 @@ const styles = StyleSheet.create({
     normal: {
       backgroundColor: '#A8A878',
     },
-
-    colData: {
+    colunaDados: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',
-      margin: 10,
+      // margin: 2,
     },
     pokemonItem: {
-      fontSize: 20,
-      // marginTop: 5,
+      fontSize: 23,
+      marginTop: 5,
       padding: 10,
       color: '#fff',
       width: '50%' // is 50% of container width
     },
-
 });
 
 export default styles;

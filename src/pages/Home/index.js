@@ -7,11 +7,11 @@ import {
   View,
   FlatList,
   Image,
-  Pressable, ActivityIndicator
+  Pressable, ActivityIndicator, StatusBar
 } from 'react-native';
 
 import api from  '../../services/api'
-import styles from '../styles';
+import styles from './styles';
 
 const Home = () => {
 
@@ -76,10 +76,13 @@ const calPokemonId = (id) => {
 }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#000'}}>
-    <View style={[styles.container]}>
+    <SafeAreaView style={{flex: 1}}>
+      <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
+    <View style={styles.container}>
         <FlatList 
             showsVerticalScrollIndicator={false}
+            pagingEnabled={true}
+            legacyImplementation={false}
             // style={{ flex: 1}}
             data={pokemon}
             numColumns={2}
