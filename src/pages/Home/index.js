@@ -21,6 +21,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [ waiting, setWaiting ] = useState(true)
 
   // Limite max de pokemons por Tela
   const limit = 1000;
@@ -32,6 +33,7 @@ useEffect(() => {
   const fethPokemon = () => {
 
     setLoading(true);
+   
 
     api.get(`?offset=${offset}&limit=${limit}`).then(pokemons => {
 
@@ -46,6 +48,7 @@ useEffect(() => {
         })
 
         setLoading(false);
+        setWaiting(false)
         
         // Atualizando nossa setPokemon com a lista 
         setPokemon((item) => [...item, ...pokemonList])
@@ -78,42 +81,54 @@ const calPokemonId = (id) => {
 
 }
 
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
-    <View style={styles.container}>
-        <FlatList 
-            showsVerticalScrollIndicator={false}
-            // style={{ flex: 1}}
-            data={pokemon}
-            numColumns={2}
-            keyExtractor={ item => String(item.id)}
-            renderItem={ ({item}) => {
-                return(
-
-                  // Navegacao para a Tela de Informações do Pokemon
-                    <Pressable style={[styles.card]} onPress={() =>
-                        navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
-
-                          {/* Listagem das imagens dos pokemons */}
-                        <Animatable.Image
-                                animation='pulse'
-                                iterationCount={Infinity}
-                                style={styles.pokemonImage}
-                                source={{
-                                        uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,            
-                                        }}
-                        ></Animatable.Image>
-                        <Text style={styles.name}>{item.id} - {item.name.toUpperCase()}</Text>
-                        <Text style={styles.item}></Text>
-                    </Pressable>
-                )
-            }}
+  if(waiting) {
+    return(
+      <View style={{  alignItems: 'center', justifyContent: 'center', flex: 1 }}> 
+        <ActivityIndicator 
+          color='#212121' size={50}
         />
+      </View>
+    )
+  } else{
 
-    </View>
-</SafeAreaView>
-  );
+    return (
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
+      <View style={styles.container}>
+          <FlatList 
+              showsVerticalScrollIndicator={false}
+              // style={{ flex: 1}}
+              data={pokemon}
+              numColumns={2}
+              keyExtractor={ item => String(item.id)}
+              renderItem={ ({item}) => {
+                  return(
+  
+                    // Navegacao para a Tela de Informações do Pokemon
+                      <Pressable style={[styles.card]} onPress={() =>
+                          navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
+  
+                            {/* Listagem das imagens dos pokemons */}
+                          <Animatable.Image
+                                  animation='pulse'
+                                  iterationCount={Infinity}
+                                  style={styles.pokemonImage}
+                                  source={{
+                                          uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,            
+                                          }}
+                          ></Animatable.Image>
+                          <Text style={styles.name}>{item.id} - {item.name.toUpperCase()}</Text>
+                          <Text style={styles.item}></Text>
+                      </Pressable>
+                  )
+              }}
+          />
+  
+      </View>
+      </SafeAreaView>
+    );
+  }
+
 };
 
 export default Home;

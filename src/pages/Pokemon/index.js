@@ -44,7 +44,11 @@ const Pokemon = ({route}) => {
   
   return (
     <SafeAreaView style={[styles.card, colors[pokemon.type[0]]]}>
-    <Text style={styles.name}>{pokemonName.toLocaleUpperCase()}</Text>
+
+    <Animatable.Text 
+    animation='fadeInUp'
+    style={styles.name}>{pokemonName.toLocaleUpperCase()}</Animatable.Text>
+    
     <Animatable.Image
         animation='pulse'
         iterationCount={Infinity}
