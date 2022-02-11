@@ -73,6 +73,7 @@ const calPokemonId = (id) => {
   }
 
   return pokemonId
+
 }
 
   return (
@@ -81,8 +82,6 @@ const calPokemonId = (id) => {
     <View style={styles.container}>
         <FlatList 
             showsVerticalScrollIndicator={false}
-            pagingEnabled={true}
-            legacyImplementation={false}
             // style={{ flex: 1}}
             data={pokemon}
             numColumns={2}
