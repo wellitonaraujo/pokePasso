@@ -18,9 +18,7 @@ export default function AppRoutes() {
                       headerStyle: {
                         backgroundColor: "#1c1c1c",
                         }
-                      }}
-
-                      />
+                      }}/>
 
       <Stack.Screen name="Pokemon" 
                     component={Pokemon}
@@ -31,9 +29,7 @@ export default function AppRoutes() {
                         backgroundColor: "#1c1c1c",
                         height: 300
                         }
-                      
-                      }}
-                      />
+                      }}/>
     </Stack.Navigator>
   )
 }

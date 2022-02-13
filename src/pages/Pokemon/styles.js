@@ -4,8 +4,7 @@ const styles = StyleSheet.create({
 
     card: {
       flex: 1,
-      padding: 20,
-      // color: '#222',
+      padding: 10,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
@@ -16,12 +15,13 @@ const styles = StyleSheet.create({
       color: '#fff',
       fontSize: 38,
       fontWeight: 'bold',
-      letterSpacing: 2
+      letterSpacing: 4,
+      marginTop: 50,
     },
      
     pokemonImage: {
-      width: 330,
-      height: 330,
+      width: 280,
+      height: 280,
     },
 
     typeContainer: {
@@ -49,21 +49,50 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: '#fff',
       borderRadius: 20,
-      paddingRight: 10,
-      paddingLeft: 30,
+      paddingLeft: 35,
+      paddingBottom: 15,
+      marginBottom: 40,
     },
 
     pokemonInfo: {
       fontSize: 20,
-      marginTop: 15,
+      marginTop: 10,
       paddingTop: 5,
       paddingBottom: 5,
       color: '#707070',
       width: '50%',
-      fontWeight: '600',
+      fontWeight: '500',
       letterSpacing: 2
     
     },
+    statsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: 20,
+      marginRight: 23,
+    },
+    pokemonStats1: {
+      marginRight: 15,
+      fontSize: 23,
+      letterSpacing: 1,
+      fontWeight: '700',
+      color: '#00ff26'
+    },
+    pokemonStats2: {
+      marginRight: 15,
+      fontSize: 23,
+      letterSpacing: 1,
+      fontWeight: '700',
+      color: '#c41d1d'
+    },
+    pokemonStats3: {
+      marginRight: 15,
+      fontSize: 23,
+      letterSpacing: 1,
+      fontWeight: '700',
+      color: '#ff5e00'
+    }
 });
 
 export default styles;

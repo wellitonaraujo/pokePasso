@@ -24,7 +24,7 @@ const PokemonList = () => {
   const [ waiting, setWaiting ] = useState(true)
 
   // Limite max de pokemons por Tela
-  const limit = 1000;
+  const limit = 1118
 
 // hook que será chamado quando nossos pokemons forem montados na tela
 useEffect(() => {
@@ -34,8 +34,9 @@ useEffect(() => {
 
     setLoading(true);
 
-    api.get(`?offset=${offset}&limit=${limit}`).then(pokemons => {
-
+    api.get(`?offset=${offset}&limit=${limit}`)
+       .then(pokemons => {
+         
         // Percorrendo todos os nossos pokemons
         const pokemonList = pokemons.data.results.map((pokemon, pokemonId) => {
             
@@ -74,8 +75,6 @@ const calPokemonId = (id) => {
   } else {
       pokemonId = id
   }
-
-
   return pokemonId
 
 }
@@ -99,7 +98,7 @@ const calPokemonId = (id) => {
               // style={{ flex: 1}}
               data={pokemon}
               numColumns={2}
-              keyExtractor={ item => String(item.id)}
+              keyExtractor={ (item, id) => ` ${item.name} + ${id}` }
               renderItem={ ({item}) => {
                   return(
   
