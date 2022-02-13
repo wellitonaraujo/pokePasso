@@ -14,26 +14,35 @@ const styles = StyleSheet.create({
 
     name: {
       color: '#fff',
-      fontSize: 40,
+      fontSize: 38,
       fontWeight: 'bold',
       letterSpacing: 2
     },
      
     pokemonImage: {
-      width: 300,
-      height: 300,
+      width: 330,
+      height: 330,
+    },
+
+    typeContainer: {
+      marginBottom: 20,
+      backgroundColor: '#fff',
+      paddingHorizontal: 30,
+      borderRadius: 40,
+      padding: 5,
+
     },
 
     type: {
-      fontSize: 25,
+      fontSize: 20,
       // marginBottom: 15,
-      color: '#707070',
+      color: '#fcba03',
       fontWeight: 'bold',
       letterSpacing: 2
     },
 
 
-    informations: {
+    informationsContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
@@ -55,13 +64,6 @@ const styles = StyleSheet.create({
       letterSpacing: 2
     
     },
-    typeContainer: {
-      marginBottom: 20,
-      backgroundColor: '#fff',
-      padding: 10,
-      borderRadius: 10,
-
-    }
 });
 
 export default styles;

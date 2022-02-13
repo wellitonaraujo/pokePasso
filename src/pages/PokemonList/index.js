@@ -14,7 +14,7 @@ import {
 import api from  '../../services/api'
 import styles from './styles';
 
-const Home = () => {
+const PokemonList = () => {
 
   const navigation = useNavigation()
 
@@ -130,4 +130,4 @@ const calPokemonId = (id) => {
 
 };
 
-export default Home;
+export default PokemonList;

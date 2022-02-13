@@ -71,16 +71,22 @@ const Pokemon = ({ route }) => {
           }}
       >
       </Animatable.Image>
-      <View style={styles.typeContainer}>
+      <Animatable.View 
+         animation='fadeInDown'
+         iterationCount={1}
+        style={styles.typeContainer}>
           <Text style={styles.type}>{pokemon.type.join(' | ').toLocaleUpperCase()}</Text>
-      </View>
+      </ Animatable.View>
         
-          <View style={styles.informations}>
+          <Animatable.View
+               animation='fadeInUp'
+              iterationCount={1}
+            style={styles.informationsContainer}>
               <Text style={styles.pokemonInfo}>Altura: {pokemon.height / 10} m</Text>
               <Text style={styles.pokemonInfo}>Peso: {pokemon.weight / 10} kg</Text>
-              <Text style={styles.pokemonInfo}>Habilidade 1: {pokemon.abilitie1}</Text>
-              <Text style={styles.pokemonInfo}>Habilidade 2: {pokemon.abilitie2}</Text>
-          </View>
+              <Text style={styles.pokemonInfo}>Habilidade 1 {pokemon.abilitie1}</Text>
+              <Text style={styles.pokemonInfo}>Habilidade 2 {pokemon.abilitie2}</Text>
+          </Animatable.View>
       </SafeAreaView>
     );
   }

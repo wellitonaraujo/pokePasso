@@ -5,7 +5,7 @@ export const colors = {
   },
 
   fire: {
-    backgroundColor: '#FA6C6C',
+    backgroundColor: '#ff172e',
   },
 
   grass: {

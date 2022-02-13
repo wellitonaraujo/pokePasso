@@ -1,17 +1,17 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import Home from '../pages/Home'
+import PokemonList from '../pages/PokemonList'
 import Pokemon from '../pages/Pokemon'
 
 const Stack = createNativeStackNavigator()
  
 export default function AppRoutes() {
   return(
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='PokemonList'>
 
-      <Stack.Screen name="Home"
-                    component={Home}
+      <Stack.Screen name="PokemonList"
+                    component={PokemonList}
                     options={{
                       title: "Pokedéx",
                       headerTintColor: "#f0f0f0",

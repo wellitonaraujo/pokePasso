@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor:  '#1c1c1c'
+      backgroundColor:  '#fff'
     },
     card: {
       width: 190,
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
-      backgroundColor: '#fff',
+      backgroundColor: '#fcba03',
       marginTop: 10,
       marginLeft: 5,
       marginRight: 5,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 
     name:{
       fontSize: 18,
-      color: '#C03028',
+      color: '#f0f0f0',
       fontWeight: '500',
       paddingBottom: 10
     },
