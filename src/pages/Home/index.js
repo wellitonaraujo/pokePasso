@@ -33,7 +33,6 @@ useEffect(() => {
   const fethPokemon = () => {
 
     setLoading(true);
-   
 
     api.get(`?offset=${offset}&limit=${limit}`).then(pokemons => {
 

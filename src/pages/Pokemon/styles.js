@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
 
     card: {
       flex: 1,
-      padding: 40,
-      color: '#222',
+      padding: 20,
+      // color: '#222',
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
@@ -14,8 +14,9 @@ const styles = StyleSheet.create({
 
     name: {
       color: '#fff',
-      fontSize: 45,
-      fontWeight: 'bold'
+      fontSize: 40,
+      fontWeight: 'bold',
+      letterSpacing: 2
     },
      
     pokemonImage: {
@@ -25,9 +26,10 @@ const styles = StyleSheet.create({
 
     type: {
       fontSize: 25,
-      marginBottom: 10,
-      color: '#fff',
-      fontWeight: 'bold'
+      // marginBottom: 15,
+      color: '#707070',
+      fontWeight: 'bold',
+      letterSpacing: 2
     },
 
 
@@ -36,15 +38,30 @@ const styles = StyleSheet.create({
       flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#fff',
+      borderRadius: 20,
+      paddingRight: 10,
+      paddingLeft: 30,
     },
 
     pokemonInfo: {
-      fontSize: 23,
-      marginTop: 5,
-      padding: 10,
-      color: '#fff',
+      fontSize: 20,
+      marginTop: 15,
+      paddingTop: 5,
+      paddingBottom: 5,
+      color: '#707070',
       width: '50%',
+      fontWeight: '600',
+      letterSpacing: 2
+    
     },
+    typeContainer: {
+      marginBottom: 20,
+      backgroundColor: '#fff',
+      padding: 10,
+      borderRadius: 10,
+
+    }
 });
 
 export default styles;

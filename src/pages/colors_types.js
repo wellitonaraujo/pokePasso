@@ -1,8 +1,5 @@
 export const colors = {
- 
-  title: {
-    fontSize: 35,
-  },
+
   steel: {
     backgroundColor: '#B8B8D0',
   },
