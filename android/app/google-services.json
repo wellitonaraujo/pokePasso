@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "807052874193",
+    "project_id": "pokepasso",
+    "storage_bucket": "pokepasso.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807052874193:android:196d2a084a8980239110f0",
+        "android_client_info": {
+          "package_name": "com.pokepasso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807052874193-cl79if7bc3o5bmr5hk4oad3sqsgc0sbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPvnsx_XVJgkyJ4OuOeqwbUxCO_FZd9W0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807052874193-cl79if7bc3o5bmr5hk4oad3sqsgc0sbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

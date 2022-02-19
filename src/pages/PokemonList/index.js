@@ -2,20 +2,24 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import  Icon  from 'react-native-vector-icons/MaterialIcons';
+
 import {
   SafeAreaView,
   Text,
   View,
   FlatList,
   Image,
-  Pressable, ActivityIndicator, StatusBar
+  Pressable, ActivityIndicator, StatusBar, TouchableOpacity
 } from 'react-native';
 
 import api from  '../../services/api'
 import styles from './styles';
 
 const PokemonList = () => {
+  const pokemonClick = useSelector(state => state.pokemon )
 
   const dispatch = useDispatch()
 
@@ -101,7 +105,21 @@ const calPokemonId = (id) => {
     return (
       <SafeAreaView style={{flex: 1}}>
         <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
+        <View style={styles.header}>
+          <TouchableOpacity>
+              <Text style={styles.title}>Pokedexx</Text>
+            </TouchableOpacity>
+            <View style={styles.headerLeft}>
+              <TouchableOpacity style={styles.headerSearch}>
+                <Icon name="star" size={30} color="#000"/>
+              </TouchableOpacity>
+            </View>
+        </View>
+
+     
       <View style={styles.container}>
+
+
           <FlatList 
               showsVerticalScrollIndicator={false}
               // style={{ flex: 1}}
@@ -135,6 +153,7 @@ const calPokemonId = (id) => {
           />
   
       </View>
+     
       </SafeAreaView>
     );
   }

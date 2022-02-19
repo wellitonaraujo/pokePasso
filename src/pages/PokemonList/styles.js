@@ -22,6 +22,27 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       paddingTop: 30,
     },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: 15,
+      paddingTop: 10,
+      // backgroundColor: "#1c1c1c",
+      borderBottomRightRadius: 20,
+      borderBottomLeftRadius: 20,
+     
+      
+    },
+
+    headerLeft: {
+
+    },
+
+    title: {
+      color: '#1c1c1c',
+      fontSize: 28,
+      fontWeight: 'bold'
+    },
 
     id:{
       fontSize: 18,
