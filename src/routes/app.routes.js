@@ -33,7 +33,7 @@ export default function AppRoutes() {
       <Stack.Screen name="Pokemon" 
                     component={Pokemon}
                     options={{
-                      title:"Informações",
+                      title:"POKEMON",
                       headerTintColor: "#f0f0f0",
                       headerStyle: {
                         backgroundColor: "#1c1c1c",

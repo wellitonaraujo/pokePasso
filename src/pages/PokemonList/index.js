@@ -108,11 +108,14 @@ const calPokemonId = (id) => {
           <View>
               <Text style={styles.title}></Text>
             </View>
-            <View style={styles.headerLeft}>
-              <TouchableOpacity style={styles.headerSearch} onPress={() => navigation.navigate('Search')}>
-                <MaterialIcons name="search" size={35} color="#1c1c1c"/>
+            <Animatable.View
+            animation='pulse'
+            iterationCount={Infinity}
+            >
+              <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                <MaterialIcons name="search" size={50} color="#fcba03"/>
               </TouchableOpacity>
-            </View>
+            </Animatable.View>
         </View>
         <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
 

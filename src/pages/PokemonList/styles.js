@@ -26,23 +26,11 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       paddingHorizontal: 15,
-      paddingTop: 10,
-      paddingBottom:10,
+      // paddingTop:5,
       // backgroundColor: "#1c1c1c",
-      borderBottomRightRadius: 20,
-      borderBottomLeftRadius: 20,
+      backgroundColor: '#fff'
      
       
-    },
-
-    headerLeft: {
-
-    },
-
-    title: {
-      color: '#1c1c1c',
-      fontSize: 26,
-      fontWeight: 'bold'
     },
 
     id:{
