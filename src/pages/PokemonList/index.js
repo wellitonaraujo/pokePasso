@@ -23,7 +23,6 @@ const PokemonList = () => {
   const [offset, setOffset] = useState(0);
   const [ waiting, setWaiting ] = useState(true)
 
-  // Limite max de pokemons por Tela
   const limit = 1118
 
 // hook que será chamado quando nossos pokemons forem montados na tela
@@ -38,8 +37,7 @@ useEffect(() => {
        .then(pokemons => {
          
         // Percorrendo todos os nossos pokemons
-        const pokemonList = pokemons.data.results.map((pokemon, pokemonId) => {
-            
+        const pokemonList = pokemons.data.results.map((pokemon, pokemonId) => {   
           // Iniciando a contagem a partir de 1
           return {
                 name: pokemon.name,
@@ -54,7 +52,7 @@ useEffect(() => {
         setPokemon((item) => [...item, ...pokemonList])
 
     }).catch(error => {
-        console.log(er)
+        console.log(error)
     })
 }
 
@@ -101,7 +99,6 @@ const calPokemonId = (id) => {
               keyExtractor={ (item, id) => ` ${item.name} + ${id}` }
               renderItem={ ({item}) => {
                   return(
-  
                     // Navegacao para a Tela de Informações do Pokemon
                       <Pressable style={[styles.card]} onPress={() =>
                           navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
