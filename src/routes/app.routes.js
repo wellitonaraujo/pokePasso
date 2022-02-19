@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import PokemonList from '../pages/PokemonList'
 import Pokemon from '../pages/Pokemon'
+import Search from '../pages/Search'
 
 const Stack = createNativeStackNavigator()
  
@@ -13,7 +14,16 @@ export default function AppRoutes() {
       <Stack.Screen name="PokemonList"
                     component={PokemonList}
                     options={{
-                      title: "",
+                      title: "POKEDÉX",
+                      headerTintColor: "#f0f0f0",
+                      headerStyle: {
+                        backgroundColor: "#1c1c1c",
+                        }
+                      }}/>
+      <Stack.Screen name="Search"
+                    component={Search}
+                    options={{
+                      title: "Buscar Pokemon",
                       headerTintColor: "#f0f0f0",
                       headerStyle: {
                         backgroundColor: "#1c1c1c",

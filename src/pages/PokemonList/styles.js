@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       paddingHorizontal: 15,
       paddingTop: 10,
+      paddingBottom:10,
       // backgroundColor: "#1c1c1c",
       borderBottomRightRadius: 20,
       borderBottomLeftRadius: 20,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
 
     title: {
       color: '#1c1c1c',
-      fontSize: 28,
+      fontSize: 26,
       fontWeight: 'bold'
     },
 

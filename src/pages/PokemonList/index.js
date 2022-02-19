@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import  Icon  from 'react-native-vector-icons/MaterialIcons';
+import  MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
 
 import {
   SafeAreaView,
@@ -104,19 +104,18 @@ const calPokemonId = (id) => {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
         <View style={styles.header}>
-          <TouchableOpacity>
-              <Text style={styles.title}>Pokedexx</Text>
-            </TouchableOpacity>
+          <View>
+              <Text style={styles.title}></Text>
+            </View>
             <View style={styles.headerLeft}>
-              <TouchableOpacity style={styles.headerSearch}>
-                <Icon name="star" size={30} color="#000"/>
+              <TouchableOpacity style={styles.headerSearch} onPress={() => navigation.navigate('Search')}>
+                <MaterialIcons name="search" size={35} color="#1c1c1c"/>
               </TouchableOpacity>
             </View>
         </View>
+        <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
 
-     
       <View style={styles.container}>
 
 
