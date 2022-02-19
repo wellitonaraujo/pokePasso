@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import { useDispatch } from 'react-redux'
 import {
   SafeAreaView,
   Text,
@@ -15,6 +16,8 @@ import api from  '../../services/api'
 import styles from './styles';
 
 const PokemonList = () => {
+
+  const dispatch = useDispatch()
 
   const navigation = useNavigation()
 
@@ -59,6 +62,14 @@ useEffect(() => {
 fethPokemon()
 }, [offset])
 
+// função para disparar alguma ação 
+function handlePokemon(pokemon) {
+  dispatch({
+    type: 'USE_POKEMON',
+    pokemon
+  })
+}
+
 
 // Função que calcula os IDs dos pokemons
 const calPokemonId = (id) => {
@@ -100,8 +111,12 @@ const calPokemonId = (id) => {
               renderItem={ ({item}) => {
                   return(
                     // Navegacao para a Tela de Informações do Pokemon
-                      <Pressable style={[styles.card]} onPress={() =>
-                          navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
+ 
+                      <Pressable style={[styles.card]} onPress={() => 
+                           handlePokemon({pokemon: item}) +
+                           navigation.navigate('Pokemon', { name: item.name, id: item.id })
+                           
+                          }>
   
                             {/* Listagem das imagens dos pokemons */}
                           <Animatable.Image

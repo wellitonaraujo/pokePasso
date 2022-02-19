@@ -1,4 +1,11 @@
+export default function pokemon(state = [], action){
 
-export default function pokemon(){
-    return [];
+    console.log(state)
+    switch(action.type) {
+        case 'USE_POKEMON':
+            return [ ...state, action.pokemon ];
+        
+        default:
+            return state;
+    }
 }
