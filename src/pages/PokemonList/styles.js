@@ -49,6 +49,13 @@ const styles = StyleSheet.create({
       fontWeight: '500',
       paddingBottom: 10
     },
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 22
+    },
+
 });
 
 export default styles;

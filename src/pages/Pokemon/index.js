@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import {  SafeAreaView, Text, Image, View, StatusBar, ActivityIndicator } from 'react-native';
+import {  SafeAreaView, Text, View, ActivityIndicator } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import api from '../../services/api';
@@ -21,11 +21,11 @@ const Pokemon = ({ route }) => {
       const abilitiesList = []
       const statsList = []
 
-    api.get(`${name}`).then((res) => {
-
-      res.data.types.map(res => typeList.push(res.type.name))
-      res.data.abilities.map(res => abilitiesList.push(res.ability.name))
-      res.data.stats.map(res => statsList.push(res.base_stat))
+    api.get(`${name}`)
+       .then((res) => {
+          res.data.types.map(res => typeList.push(res.type.name))
+          res.data.abilities.map(res => abilitiesList.push(res.ability.name))
+          res.data.stats.map(res => statsList.push(res.base_stat))
           
         setPokemon({
           id: route.params.id,
@@ -40,13 +40,12 @@ const Pokemon = ({ route }) => {
           stats3: statsList[2],
         });
 
-      })
-     
+      })  
   }
 
-  setWaiting(false)
+    setWaiting(false)
 
-  fethPokemon(`${route.params.name}`)
+    fethPokemon(`${route.params.name}`)
 
   }, [])
 
@@ -65,8 +64,9 @@ const Pokemon = ({ route }) => {
       <SafeAreaView style={[styles.card, colors[pokemon.type[0]]]}>
   
       <Animatable.Text 
-      animation='fadeInUp'
-      style={styles.name}>{pokemonName.toLocaleUpperCase()}</Animatable.Text>
+        animation='fadeInUp'
+        style={styles.name}>{pokemonName.toLocaleUpperCase()}
+      </Animatable.Text>
       
       <Animatable.Image
           animation='pulse'
@@ -74,19 +74,19 @@ const Pokemon = ({ route }) => {
           style={styles.pokemonImage}
           source={{
               uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${route.params.id}.png`,
-          }}
+                 }}
       >
       </Animatable.Image>
       <Animatable.View 
-         animation='fadeInDown'
-         iterationCount={1}
+        animation='fadeInDown'
+        iterationCount={1}
         style={styles.typeContainer}>
           <Text style={styles.type}>{pokemon.type.join(' | ').toLocaleUpperCase()}</Text>
       </ Animatable.View>
         
           <Animatable.View
-               animation='fadeInUp'
-              iterationCount={1}
+            animation='fadeInUp'
+            iterationCount={1}
             style={styles.informationsContainer}>
               <Text style={styles.pokemonInfo}>Altura: {pokemon.height / 10} m</Text>
               <Text style={styles.pokemonInfo}>Peso: {pokemon.weight / 10} kg</Text>

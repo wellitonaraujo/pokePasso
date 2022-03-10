@@ -1,47 +1,30 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Alert, Keyboard } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Autocomplete, FlatList } from 'react-native'
+import React, { useState } from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { useIsFocused } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 
 import styles from './styles'
 import api from '../../services/api';
+import PokemonList from '../PokemonList';
 
 const Search = () => {
+
   const [ input, setInput ] = useState('')
-  const [ pokemon, setPokemon ] = useState([]);
-  const [ offset, setOffset ] = useState(0);
+  const [ pokemon, setPokemon ] = useState('');
 
-  const isFocused = useIsFocused()
+   function searchPokemon() {
 
-  useEffect(() => {
+      api.get(`https://pokeapi.co/api/v2/pokemon/${input}`)
+      .then(response => {
 
-  }, [isFocused])
-
+       setPokemon(response.data.name)
+          
   
-  async function searchPokemon() {
-    if(input == "") {
-      alert('Ops, digite um nome de Pokemon...')
-      setInput('')
-      return;
-    }
-
-    try {
-      const resp = await api.get(`https://pokeapi.co/api/v2/pokemon/${input}`)
-      console.log(resp.data)
-
-      setPokemon(resp.data)
-
+      }).catch(error => {
+        console.log(error)
+      })
       
-      Keyboard.dismiss()
-      
-    } catch (error) {
-      console.log(error)
     }
-
- 
-    
-  }
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,16 +39,20 @@ const Search = () => {
         />
 
         <TouchableOpacity 
-        onPress={ searchPokemon }
-        style={styles.buttonSearch}>
+          onPress={ searchPokemon }
+          style={styles.buttonSearch}>
+
           <MaterialIcons name='search' size={30} color="#fff"/>
         </TouchableOpacity>
 
-      </View>
+        <FlatList
+          ListHeaderComponent={PokemonList}
+          
+      />
 
-      <View><Text>{pokemon.name}</Text></View>
+      </View>
     </SafeAreaView>
   )
 }
 
-export default Search
+export default Search;

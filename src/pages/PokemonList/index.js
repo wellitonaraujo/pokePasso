@@ -1,21 +1,20 @@
-
-import React, { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import * as Animatable from 'react-native-animatable';
-import { useDispatch, useSelector } from 'react-redux';
-import  MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
-
 import {
   SafeAreaView,
   Text,
   View,
   FlatList,
-  Image,
-  Pressable, ActivityIndicator, StatusBar, TouchableOpacity
+  Pressable, 
+  ActivityIndicator, 
+  StatusBar, 
 } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
+import { useDispatch, useSelector } from 'react-redux';
 
 import api from  '../../services/api'
-import styles from './styles';
+import styles from './styles'
+import Search from '../../components/Search';
 
 const PokemonList = () => {
   const pokemonClick = useSelector(state => state.pokemon )
@@ -24,37 +23,34 @@ const PokemonList = () => {
 
   const navigation = useNavigation()
 
-  const [loading, setLoading] = useState(false);
-  const [pokemon, setPokemon] = useState([]);
-  const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(false)
+
+  const [pokemon, setPokemon] = useState([])
+  
+  const [offset, setOffset] = useState(0)
   const [ waiting, setWaiting ] = useState(true)
 
   const limit = 1118
 
-// hook que será chamado quando nossos pokemons forem montados na tela
 useEffect(() => {
 
-  // Função que busca nossos pokemons
   const fethPokemon = () => {
 
     setLoading(true);
 
     api.get(`?offset=${offset}&limit=${limit}`)
        .then(pokemons => {
-         
-        // Percorrendo todos os nossos pokemons
+
         const pokemonList = pokemons.data.results.map((pokemon, pokemonId) => {   
-          // Iniciando a contagem a partir de 1
           return {
                 name: pokemon.name,
-                id: calPokemonId(pokemonId + offset + 1),
-            }
-        })
+                id: calcPokemonId(pokemonId + offset + 1),
+              }
+          })
 
-        setLoading(false);
+        setLoading(false)
         setWaiting(false)
-        
-        // Atualizando nossa setPokemon com a lista 
+
         setPokemon((item) => [...item, ...pokemonList])
 
     }).catch(error => {
@@ -73,9 +69,8 @@ function handlePokemon(pokemon) {
   })
 }
 
-
 // Função que calcula os IDs dos pokemons
-const calPokemonId = (id) => {
+const calcPokemonId = (id) => {
   let pokemonId
 
   if (id <= 9) {
@@ -103,34 +98,20 @@ const calPokemonId = (id) => {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <View style={styles.header}>
-          <View>
-              <Text style={styles.title}></Text>
-            </View>
-            <Animatable.View
-            animation='pulse'
-            iterationCount={Infinity}
-            >
-              <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                <MaterialIcons name="search" size={50} color="#fcba03"/>
-              </TouchableOpacity>
-            </Animatable.View>
-        </View>
+       
+        <Search />
+        
         <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
 
       <View style={styles.container}>
-
-
           <FlatList 
               showsVerticalScrollIndicator={false}
-              // style={{ flex: 1}}
               data={pokemon}
               numColumns={2}
               keyExtractor={ (item, id) => ` ${item.name} + ${id}` }
               renderItem={ ({item}) => {
                   return(
                     // Navegacao para a Tela de Informações do Pokemon
- 
                       <Pressable style={[styles.card]} onPress={() => 
                            handlePokemon({pokemon: item}) +
                            navigation.navigate('Pokemon', { name: item.name, id: item.id })
@@ -152,13 +133,12 @@ const calPokemonId = (id) => {
                   )
               }}
           />
-  
-      </View>
-     
+
+      </View>     
       </SafeAreaView>
     );
   }
-
 };
 
 export default PokemonList;
+

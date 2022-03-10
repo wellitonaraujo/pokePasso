@@ -18,6 +18,7 @@ export default function AppRoutes() {
                       headerTintColor: "#f0f0f0",
                       headerStyle: {
                         backgroundColor: "#1c1c1c",
+                        
                         }
                       }}/>
       <Stack.Screen name="Search"
