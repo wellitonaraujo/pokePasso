@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: '#fff',
       borderRadius: 20,
-      paddingLeft: 35,
+      paddingLeft: 30,
       paddingBottom: 15,
       marginBottom: 40,
     },
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 20,
+      paddingBottom: 8,
       marginRight: 23,
     },
     pokemonStats1: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
       fontSize: 23,
       letterSpacing: 1,
       fontWeight: '700',
-      color: '#00ff26'
+      color: '#00ff26',
     },
     pokemonStats2: {
       marginRight: 15,

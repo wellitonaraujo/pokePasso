@@ -4,10 +4,35 @@ const styles = StyleSheet.create({
  
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor:  '#fff'
     },
+
+    containerInput: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      width: '100%',
+      marginVertical: 14,
+    },
+
+    input: {
+      backgroundColor: '#EBEBEB',
+      marginLeft: 10,
+      height: 50,
+      width: '80%',
+      borderRadius: 4,
+      padding: 5,
+    },
+
+    buttonSearch: {
+      backgroundColor: '#fcba03',
+      borderRadius: 4,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '15%',
+      marginLeft: 5,
+      marginRight: 10,
+    },
+
     card: {
       width: 190,
       height: 180,
@@ -49,13 +74,7 @@ const styles = StyleSheet.create({
       fontWeight: '500',
       paddingBottom: 10
     },
-    centeredView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 22
-    },
-
+   
 });
 
 export default styles;
