@@ -10,32 +10,24 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import { useDispatch, useSelector } from 'react-redux';
 
 import api from  '../../services/api'
+import { getPokemons } from '../../services/api';
 import styles from './styles'
 import Search from '../../components/Search';
+import Loading from '../../components/Loading';
 
 const PokemonList = () => {
-  const pokemonClick = useSelector(state => state.pokemon )
-
-  const dispatch = useDispatch()
-
   const navigation = useNavigation()
 
   const [loading, setLoading] = useState(false)
-
   const [pokemon, setPokemon] = useState([])
-  
   const [offset, setOffset] = useState(0)
   const [ waiting, setWaiting ] = useState(true)
 
   const limit = 1118
 
-useEffect(() => {
-
   const fethPokemon = () => {
-
     setLoading(true);
 
     api.get(`?offset=${offset}&limit=${limit}`)
@@ -48,26 +40,17 @@ useEffect(() => {
               }
           })
 
-        setLoading(false)
-        setWaiting(false)
+    setPokemon((item) => [...item, pokemonList])
 
-        setPokemon((item) => [...item, ...pokemonList])
-
-    }).catch(error => {
-        console.log(error)
-    })
+    }).catch(error => console.log(error))
 }
 
-fethPokemon()
+useEffect(() => {
+  setLoading(false)
+  setWaiting(false)
+  fethPokemon()
 }, [offset])
 
-// função para disparar alguma ação 
-function handlePokemon(pokemon) {
-  dispatch({
-    type: 'USE_POKEMON',
-    pokemon
-  })
-}
 
 // Função que calcula os IDs dos pokemons
 const calcPokemonId = (id) => {
@@ -87,54 +70,39 @@ const calcPokemonId = (id) => {
 }
 
   if(waiting) {
-    return(
-      <View style={{  alignItems: 'center', justifyContent: 'center', flex: 1 }}> 
-        <ActivityIndicator 
-          color='#212121' size={50}
-        />
-      </View>
-    )
+    return(<Loading />)
   } else{
 
     return (
-      <SafeAreaView style={{flex: 1}}>
-       
-        <Search />
-        
+      <SafeAreaView style={{flex: 1}}> 
+        <Search /> 
         <StatusBar backgroundColor='transparent' barStyle='light-content' translucent={true}/>
 
-      <View style={styles.container}>
-          <FlatList 
-              showsVerticalScrollIndicator={false}
-              data={pokemon}
-              numColumns={2}
-              keyExtractor={ (item, id) => ` ${item.name} + ${id}` }
-              renderItem={ ({item}) => {
-                  return(
-                    // Navegacao para a Tela de Informações do Pokemon
-                      <Pressable style={[styles.card]} onPress={() => 
-                           handlePokemon({pokemon: item}) +
-                           navigation.navigate('Pokemon', { name: item.name, id: item.id })
-                           
-                          }>
-  
-                            {/* Listagem das imagens dos pokemons */}
-                          <Animatable.Image
-                                  animation='pulse'
-                                  iterationCount={Infinity}
-                                  style={styles.pokemonImage}
-                                  source={{
-                                          uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,            
-                                          }}
-                          ></Animatable.Image>
-                          <Text style={styles.name}>{item.id} - {item.name.toUpperCase()}</Text>
-                          <Text style={styles.item}></Text>
-                      </Pressable>
-                  )
-              }}
-          />
+        <View style={styles.container}>
+            <FlatList 
+                showsVerticalScrollIndicator={false}
+                data={pokemon}
+                numColumns={2}
+                keyExtractor={ (item, id) => ` ${item.name} + ${id}` }
+                renderItem={ ({item}) => {
+                    return(
+                        <Pressable style={[styles.card]} onPress={() => navigation.navigate('Pokemon', { name: item.name, id: item.id })}>
+                            <Animatable.Image
+                                    animation='pulse'
+                                    iterationCount={Infinity}
+                                    style={styles.pokemonImage}
+                                    source={{
+                                            uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`,            
+                                            }}
+                            ></Animatable.Image>
+                            <Text style={styles.name}>{item.id} - {item.name}</Text>
+                            <Text style={styles.item}></Text>
+                        </Pressable>
+                    )
+                }}
+            />
 
-      </View>     
+        </View>     
       </SafeAreaView>
     );
   }
