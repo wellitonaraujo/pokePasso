@@ -6,16 +6,15 @@ import * as Animatable from 'react-native-animatable';
 import api from '../../services/api';
 import styles from './styles';
 import { colors } from '../colors_types';
+import Loading from '../../components/Loading';
 
 const Pokemon = ({ route }) => {
 
   const [pokemon, setPokemon] = useState({type: ['']})
   const [ waiting, setWaiting ] = useState(true)
 
-  // hook que será chamado quando o pokemon for montados na tela
   useEffect(() => {
 
-    // Buscando e armazenando nosssos pokemons por tipo e habilidade
       const fethPokemon = (name) => {
         const typeList = []
         const abilitiesList = []
@@ -53,13 +52,7 @@ const Pokemon = ({ route }) => {
   const pokemonName = route.params.name.charAt(0) + route.params.name.slice(1);
 
   if(waiting) {
-    return(
-      <View style={{  alignItems: 'center', justifyContent: 'center', flex: 1 }}> 
-        <ActivityIndicator 
-          color='#212121' size={70}
-        />
-      </View>
-    )
+    return(<Loading />)
   } else{
     return (
       <SafeAreaView style={[styles.card, colors[pokemon.type[0]]]}>
