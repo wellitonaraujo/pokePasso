@@ -6,11 +6,11 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor:  '#fff'
+      backgroundColor:  '#1c1c1c'
     },
     card: {
-      width: 190,
-      height: 180,
+      width: 123,
+      height: 150,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
@@ -20,24 +20,25 @@ const styles = StyleSheet.create({
       marginLeft: 5,
       marginRight: 5,
       borderRadius: 10,
-      paddingTop: 30,
     },
 
     id:{
-      fontSize: 18,
-      paddingTop: 5,
+      fontSize: 12,
+      marginLeft: 70,
+      color: '#f0f0f0',
+      letterSpacing: 2,
     },
 
     pokemonImage: {
-      width: 120,
-      height: 120,
+      width: 90,
+      height: 90,
     },
 
     name:{
-      fontSize: 18,
+      fontSize: 13,
       color: '#f0f0f0',
-      fontWeight: '500',
-      paddingBottom: 10
+      fontWeight: '700',
+      letterSpacing: 2,
     },
 });
 

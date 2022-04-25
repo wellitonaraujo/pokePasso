@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import {  SafeAreaView, Text, Image, View, StatusBar, ActivityIndicator } from 'react-native';
+import {  SafeAreaView, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import api from '../../services/api';
@@ -11,47 +11,42 @@ import Loading from '../../components/Loading';
 const Pokemon = ({ route }) => {
 
   const [pokemon, setPokemon] = useState({type: ['']})
-  const [ waiting, setWaiting ] = useState(true)
+  const [ loading, setLoading ] = useState(true)
 
-  useEffect(() => {
+  const fethPokemon = (name) => {
+    const typeList = []
+    const abilitiesList = []
+    const statsList = []
 
-      const fethPokemon = (name) => {
-        const typeList = []
-        const abilitiesList = []
-        const statsList = []
-
-      api.get(`${name}`).then((res) => {
-        res.data.types.map(res => typeList.push(res.type.name))
-        res.data.abilities.map(res => abilitiesList.push(res.ability.name))
-        res.data.stats.map(res => statsList.push(res.base_stat))
-          
-            setPokemon({
-              id: route.params.id,
-              name: route.params.name, 
-              type: typeList, 
-              height: res.data.height,
-              weight: res.data.weight,
-              abilitie1: abilitiesList[0],
-              abilitie2: abilitiesList[1],
-              stats1: statsList[0],
-              stats2: statsList[1],
-              stats3: statsList[2],
-
-            });
-
-      })
+    api.get(`${name}`).then((res) => {
+      res.data.types.map(res => typeList.push(res.type.name))
+      res.data.abilities.map(res => abilitiesList.push(res.ability.name))
+      res.data.stats.map(res => statsList.push(res.base_stat))
+            
+        setPokemon({
+          id: route.params.id,
+          name: route.params.name, 
+          type: typeList, 
+          height: res.data.height,
+          weight: res.data.weight,
+          abilitie1: abilitiesList[0],
+          abilitie2: abilitiesList[1],
+          stats1: statsList[0],
+          stats2: statsList[1],
+          stats3: statsList[2],
+        });
+        })
      
-  }
-
-  setWaiting(false)
-
-  fethPokemon(`${route.params.name}`)
+        }
+  useEffect(() => {
+    setLoading(false)
+    fethPokemon(`${route.params.name}`)
 
   }, [])
 
   const pokemonName = route.params.name.charAt(0) + route.params.name.slice(1);
 
-  if(waiting) {
+  if(loading) {
     return(<Loading />)
   } else{
     return (
