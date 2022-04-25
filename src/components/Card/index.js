@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { View, FlatList } from 'react-native';
 
-import api from '../../services/api';
+import { getPokemons } from '../../services/api';
 import Carditem from '../Carditem';
 
-export default function Card(item) {
+
+export default function Card() {
 
   const [loading, setLoading] = useState(false);
   const [pokemon, setPokemon] = useState([]);
@@ -12,27 +13,26 @@ export default function Card(item) {
 
   const limit = 1118
 
-  const fethPokemon = () => {
-    setLoading(true);
-
-    api.get(`?offset=${offset}&limit=${limit}`)
-       .then(pokemons => {
-        const pokemonList = pokemons.data.results.map((pokemon, pokemonId) => {
-          return {
-                name: pokemon.name,
-                id: calPokemonId(pokemonId + offset + 1),
-            }
-        })
-        setLoading(false);
-        setPokemon((item) => [...item, ...pokemonList])
-
-    }).catch(error => {
-        console.log(error)
-    })
-}
 
 useEffect(() => {
-  fethPokemon()
+  setLoading(true);
+
+  getPokemons(offset, limit)
+
+  .then(pokemons => {
+    const pokemonList = pokemons.map((pokemon, pokemonId) => {
+      return {
+            name: pokemon.name,
+            id: calPokemonId(pokemonId + offset + 1),
+        }
+    })
+    setLoading(false);
+    setPokemon((item) => [...item, ...pokemonList])
+
+}).catch(error => {
+    console.log(error)
+})
+  
 }, [offset])
 
 const calPokemonId = (id) => {
@@ -58,7 +58,9 @@ const calPokemonId = (id) => {
             data={pokemon}
             numColumns={2}
             keyExtractor={ (item, id) => ` ${item.name} + ${id}` }
-            renderItem={ ({ item }) => <Carditem name={item.name}/>}
+            renderItem={ ({ item }) => <Carditem name={item.name}
+                                                  id={item.id}/>
+            }
         />
    </View>
   );
