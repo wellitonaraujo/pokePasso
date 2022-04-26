@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
+      // backgroundColor: '#fcba03'
     },
 
     name: {
@@ -20,8 +21,8 @@ const styles = StyleSheet.create({
     },
      
     pokemonImage: {
-      width: 280,
-      height: 280,
+      width: 250,
+      height: 250,
     },
 
     typeContainer: {
