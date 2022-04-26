@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
       marginLeft: 70,
       color: '#f0f0f0',
       letterSpacing: 2,
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      fontWeight: '600',
+      paddingHorizontal: 5,
+      color: '#1c1c1c'
     },
 
     pokemonImage: {

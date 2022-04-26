@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from '../constants/constants';
+import { BASE_URL} from '../constants/constants';
 
 // Get pokemons list 
 export const getPokemons = async (offset, limit) => {

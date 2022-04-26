@@ -33,10 +33,11 @@ const Pokemon = ({ route }) => {
       stats1: statsList[0],
       stats2: statsList[1],
       stats3: statsList[2],
+      stats4: statsList[3],
+      stats5: statsList[4],
     });
    })
   }
-
   useEffect(() => {
     setLoading(false)
     myPokemon()
@@ -66,20 +67,22 @@ const Pokemon = ({ route }) => {
           <Text style={styles.type}>{pokemon.type.join(' | ').toLocaleUpperCase()}</Text>
         </ Animatable.View>
         
-          <Animatable.View
-              animation='fadeInUp'
-              iterationCount={1}
-              style={styles.informationsContainer}>
+          <View style={styles.informationsContainer}>
             <Text style={styles.pokemonInfo}>Altura: {pokemon.height / 10} m</Text>
-            <Text style={styles.pokemonInfo}>Peso: {pokemon.weight / 10} kg</Text>
-            <Text style={styles.pokemonInfo}>Habilidade 1 {pokemon.abilitie1}</Text>
-            <Text style={styles.pokemonInfo}>Habilidade 2 {pokemon.abilitie2}</Text>
+            <Text style={styles.pokemonInfo}> Peso: {pokemon.weight / 10} kg</Text>
+            <Text style={styles.pokemonInfo}>1º Habilidade</Text>
+            <Text style={styles.ability}>{pokemon.abilitie1}</Text>
+            <Text style={styles.pokemonInfo}>2º Habilidade</Text>
+            <Text style={styles.ability}>{pokemon.abilitie2}</Text>
+
           <View style={styles.statsContainer}>
             <Text style={styles.pokemonStats1}> HP {pokemon.stats1}</Text>
-            <Text style={styles.pokemonStats2}> Defesa {pokemon.stats2}</Text>
-            <Text style={styles.pokemonStats3}>Ataque {pokemon.stats3}</Text>
+            <Text style={styles.pokemonStats2}> Def. {pokemon.stats2}</Text>
+            <Text style={styles.pokemonStats3}>Atk. {pokemon.stats3}</Text>
+            <Text style={styles.pokemonStats4}> Sp. Atk {pokemon.stats4}</Text>
+            <Text style={styles.pokemonStats5}> Sp. Def {pokemon.stats5}</Text>
           </View>   
-          </Animatable.View>
+          </View>
       </SafeAreaView>
     );
 };
