@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import styles from '../../pages/Pokemon/styles';
 
-export default function Favorite() {
+export default function ButtonFavorite() {
   const navigation = useNavigation()
   
  return (

@@ -8,7 +8,7 @@ import { getPokemon } from '../../services/api';
 import styles from './styles';
 import { colors } from '../colors_types';
 import Loading from '../../components/Loading';
-import Favorite from '../../components/Favorite';
+import ButtonFavorite from '../../components/ButtonFavorite';
 
 const Pokemon = ({ route }) => {
   const [pokemon, setPokemon] = useState({type: ['']})
@@ -122,7 +122,8 @@ const Pokemon = ({ route }) => {
             <Pressable style={styles.favoriteBtn} onPress={() => {favoritePokemon(pokemon)}}>
                 <Text style={styles.text}>Favoritar</Text>
             </Pressable>
-            <Favorite />
+            <View style={{paddingHorizontal: 50}}></View>
+            <ButtonFavorite />
           </View>
 
       </SafeAreaView>

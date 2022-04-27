@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       letterSpacing: 4,
       // marginTop: 50,
+      textTransform: 'uppercase'
     },
      
     pokemonImage: {
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
       marginBottom: 7,
       flexDirection: 'row',
       justifyContent: 'center',
-      marginHorizontal: 100,
+      // marginHorizontal: 100,
   
     },
 
@@ -48,8 +49,9 @@ const styles = StyleSheet.create({
       paddingHorizontal: 22,
       borderRadius: 20,
       elevation: 3,
-      backgroundColor: '#fcba03',
-      // marginBottom: 10,
+      backgroundColor: '#d61132',
+      borderColor: '#000',
+      borderEndColor: 2
     },
     myfavoriteBtn: {
       alignItems: 'flex-start',
