@@ -1,12 +1,14 @@
 
 import React, { useEffect, useState } from 'react';
-import {  SafeAreaView, Text, View } from 'react-native';
+import {  SafeAreaView, Text, View, Pressable, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { getPokemon } from '../../services/api';
 import styles from './styles';
 import { colors } from '../colors_types';
 import Loading from '../../components/Loading';
+import Favorite from '../../components/Favorite';
 
 const Pokemon = ({ route }) => {
   const [pokemon, setPokemon] = useState({type: ['']})
@@ -22,22 +24,54 @@ const Pokemon = ({ route }) => {
         res.data.types.map(res => typeList.push(res.type.name))
         res.data.abilities.map(res => abilitiesList.push(res.ability.name))
         res.data.stats.map(res => statsList.push(res.base_stat))
-
-    setPokemon({
-      name: route.params.name, 
-      type: typeList, 
-      height: res.data.height,
-      weight: res.data.weight,
-      abilitie1: abilitiesList[0],
-      abilitie2: abilitiesList[1],
-      stats1: statsList[0],
-      stats2: statsList[1],
-      stats3: statsList[2],
-      stats4: statsList[3],
-      stats5: statsList[4],
-    });
+    
+        const pokemonInfo = () => {
+          return {
+            name: route.params.name, 
+            type: typeList, 
+            height: res.data.height,
+            weight: res.data.weight,
+            abilitie1: abilitiesList[0],
+            abilitie2: abilitiesList[1],
+            stats1: statsList[0],
+            stats2: statsList[1],
+            stats3: statsList[2],
+            stats4: statsList[3],
+            stats5: statsList[4],
+            }
+          }
+      setPokemon(pokemonInfo);
    })
   }
+
+  const favoritePokemon = async (value) => {
+    try {
+        const pokemon_db = await AsyncStorage.getItem('pokemon');
+        const jsonValue = JSON.stringify([value])
+  
+        if (pokemon_db === null) {
+            await AsyncStorage.setItem('pokemon', jsonValue);
+        } else {
+  
+            const pokemon_obj = pokemon_db != null ? JSON.parse(pokemon_db) : null;
+            const findPokemon = pokemon_obj.find(pokemon => pokemon.name === value.name);
+  
+            if (findPokemon) {
+                Alert.alert('Ops...', 'Esse pokemon já foi inserido aos favoritos.');
+            } else {
+                pokemon_obj.push(value);
+                const new_db = JSON.stringify(pokemon_obj)
+                await AsyncStorage.setItem('pokemon', new_db);
+  
+                Alert.alert('Sucesso','Pokemon adicionado aos favoritos!');
+                
+            }
+        }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  
   useEffect(() => {
     setLoading(false)
     myPokemon()
@@ -81,8 +115,16 @@ const Pokemon = ({ route }) => {
             <Text style={styles.pokemonStats3}>Atk. {pokemon.stats3}</Text>
             <Text style={styles.pokemonStats4}> Sp. Atk {pokemon.stats4}</Text>
             <Text style={styles.pokemonStats5}> Sp. Def {pokemon.stats5}</Text>
-          </View>   
+          </View>  
           </View>
+
+          <View style={styles.containerBtn}>
+            <Pressable style={styles.favoriteBtn} onPress={() => {favoritePokemon(pokemon)}}>
+                <Text style={styles.text}>Favoritar</Text>
+            </Pressable>
+            <Favorite />
+          </View>
+
       </SafeAreaView>
     );
 };

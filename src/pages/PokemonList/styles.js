@@ -45,6 +45,16 @@ const styles = StyleSheet.create({
       fontWeight: '700',
       letterSpacing: 2,
     },
+    favoriteBtn: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 10,
+      paddingHorizontal: 22,
+      borderRadius: 20,
+      elevation: 3,
+      backgroundColor: '#c18f00',
+      margin: 20,
+    }
 });
 
 export default styles;

@@ -8,10 +8,11 @@ import Loading from '../Loading';
 export default function Card() {
   const [loading, setLoading] = useState(false);
   const [pokemon, setPokemon] = useState([]);
-  const [offset, ] = useState(0);
-  const [limit, ] = useState(2000);
+  const [offset, setOffset] = useState(0);
+  
+  const limit = 12
 
-  useEffect(() => {
+  const pokemonList = () => {
     setLoading(true);
 
     getPokemons(offset,limit)
@@ -26,10 +27,11 @@ export default function Card() {
       setPokemon((item) => [...item, ...pokemonList])
 
     }).catch(error => console.log(error))
-    
-  }, [offset])
+  }
 
-const calPokemonId = id => {
+  const loadPokemon = () => { setOffset((item) => item + limit) }
+
+  const calPokemonId = id => {
   let pokemonId
 
   if (id <= 9) { pokemonId = `00${id}`
@@ -41,20 +43,25 @@ const calPokemonId = id => {
   return pokemonId
 }
 
- if(loading) {
-   return <Loading />
- } else {
-  return (
-    <View>
-         <FlatList 
-            showsVerticalScrollIndicator={false}
-            data={pokemon}
-            numColumns={3}
-            keyExtractor={ (item, id) => `${item.name} + ${id}` }
-            renderItem={ ({ item }) => <Carditem name={item.name} id={item.id}/>}
-         />
-    </View>
-   );
- }
+const renderFooter = () => {
+  if (!loading) return null;
+  return <Loading />;
+};
 
+useEffect(() => { pokemonList() }, [offset])
+
+  return (
+    <>
+        <FlatList 
+          showsVerticalScrollIndicator={false}
+          onEndReached={() => loadPokemon()}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={() => renderFooter()}
+          data={pokemon}
+          numColumns={3}
+          keyExtractor={ (item, id) => `${item.name} + ${id}` }
+          renderItem={ ({ item }) => <Carditem name={item.name} id={item.id}/>}
+        />
+    </>
+   );
 }

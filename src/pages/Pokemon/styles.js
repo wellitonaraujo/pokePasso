@@ -4,24 +4,25 @@ const styles = StyleSheet.create({
 
     card: {
       flex: 1,
-      padding: 10,
+      padding: 7,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
+      backgroundColor: '#1c1c1c'
     },
 
     name: {
       color: '#fff',
-      fontSize: 32,
+      fontSize: 28,
       fontWeight: 'bold',
       letterSpacing: 4,
-      marginTop: 50,
+      // marginTop: 50,
     },
      
     pokemonImage: {
-      width: 230,
-      height: 230,
+      width: 200,
+      height: 200,
     },
 
     typeContainer: {
@@ -31,6 +32,40 @@ const styles = StyleSheet.create({
       borderRadius: 20,
       padding: 5,
 
+    },
+    containerBtn: {
+      marginBottom: 7,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginHorizontal: 100,
+  
+    },
+
+    favoriteBtn: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 10,
+      paddingHorizontal: 22,
+      borderRadius: 20,
+      elevation: 3,
+      backgroundColor: '#fcba03',
+      // marginBottom: 10,
+    },
+    myfavoriteBtn: {
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
+      paddingVertical: 10,
+      paddingHorizontal: 22,
+      borderRadius: 20,
+      elevation: 3,
+      backgroundColor: '#ff5e00'
+    },
+    text: {
+      fontSize: 16,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: 'white',
     },
 
     type: {
@@ -53,7 +88,7 @@ const styles = StyleSheet.create({
     },
 
     pokemonInfo: {
-      fontSize: 18,
+      fontSize: 17,
       marginTop: 10,
       paddingTop: 5,
       paddingBottom: 5,
@@ -64,8 +99,8 @@ const styles = StyleSheet.create({
     },
     
     ability: {
-      width: 155,
-      fontSize: 18,
+      width: 160,
+      fontSize: 15,
       letterSpacing: 1,
       fontWeight: '600',
       backgroundColor: '#00ff26',
@@ -75,7 +110,8 @@ const styles = StyleSheet.create({
       paddingHorizontal: 20,
       alignItems: 'center',
       justifyContent: 'center',
-      flexDirection: 'row'
+      flexDirection: 'row',
+      textTransform: 'uppercase'
     },
 
     statsContainer: {
@@ -120,7 +156,7 @@ const styles = StyleSheet.create({
       fontSize: 12,
       letterSpacing: 1,
       fontWeight: '700',
-      backgroundColor: '#000',
+      backgroundColor: '#1c1c1c',
       borderRadius: 8,
       padding: 4,
       color: '#fff',
@@ -131,7 +167,7 @@ const styles = StyleSheet.create({
       fontSize: 12,
       letterSpacing: 1,
       fontWeight: '700',
-      backgroundColor: '#000',
+      backgroundColor: '#1c1c1c',
       borderRadius: 8,
       padding: 4,
       color: '#fff',
