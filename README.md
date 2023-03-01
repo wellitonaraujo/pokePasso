@@ -1,5 +1,5 @@
 # pokePasso
-Pokedéx em React Native
+Pokedéx em React Native + Axios
 
 <div>
     <img width="305" alt="Screenshot" src="https://user-images.githubusercontent.com/42000136/222172087-c9267039-d310-49d0-a30f-11cb8bcc8c12.jpeg">
